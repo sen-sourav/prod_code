@@ -2,7 +2,8 @@ import discord
 import requests
 import os
 
-TOKEN = 'your_discord_bot_token'
+TOKEN = 'MTI3MDEyMjkzMzM3NzA0NDY1Mg.G36aMp.eMe7mscWfnkOayHyhkIOtWmlliUSo_0rpJ6NqM'  # Replace with your bot's token
+server_ip = '0.0.0.0' # replace with server ip
 client = discord.Client()
 
 @client.event
@@ -22,7 +23,7 @@ async def on_message(message):
             await attachment.save(input_file_path)
 
             files = {'file': open(input_file_path, 'rb')}
-            response = requests.post('http://your_server_ip:8000/inference', files=files)
+            response = requests.post(f'http://{server_ip}:8000/inference', files=files)
 
             if response.status_code == 200:
                 response_data = response.json()
