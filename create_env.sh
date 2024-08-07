@@ -19,3 +19,8 @@ pip install torch-summary
 # Install fluidsynth via apt
 sudo apt update
 sudo apt install -y fluidsynth
+
+
+# Install for discord
+pip install discord
+pip install responses
