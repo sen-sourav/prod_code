@@ -5,7 +5,7 @@ import statistics
 from basic_pitch_torch.inference import predict
 from ultimate_accompaniment_transformer import TMIDIX
 from ultimate_accompaniment_transformer.midi_to_colab_audio import midi_to_colab_audio
-from app.helper import save_audio_to_wav, my_linear_mixing
+from app.helper_functions import save_audio_to_wav, my_linear_mixing
 
 def generate_acc(model, input_seq, next_note_time, force_acc=False, num_samples=2, num_batches=8, num_memory_tokens=4096, temperature=0.9):
     input_seq = input_seq[-num_memory_tokens:]
@@ -38,9 +38,9 @@ def generate_acc(model, input_seq, next_note_time, force_acc=False, num_samples=
 def model_inference(model, input_file_path, output_dir):
     os.makedirs(output_dir, exist_ok=True)
     base_name = os.path.basename(input_file_path).split('.')[0]
-    
+
     # Step 1: Convert vocal wav to midi
-    model_output, midi_data, note_events = predict(input_file_path, model_path='basic-pitch-torch/basic_pitch_torch/assets/basic_pitch_pytorch_icassp_2022.pth', minimum_frequency=60)
+    model_output, midi_data, note_events = predict(input_file_path, model_path='./repos/basic-pitch-torch/basic_pitch_torch/assets/basic_pitch_pytorch_icassp_2022.pth', minimum_frequency=60)
     vocals_midi_path = os.path.join(output_dir, f"{base_name}.mid")
     midi_data.write(vocals_midi_path)
 

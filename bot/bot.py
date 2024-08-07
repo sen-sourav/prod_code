@@ -20,10 +20,10 @@ async def on_message(message):
             input_file_path = f"uploads/{attachment.filename}"
             os.makedirs(os.path.dirname(input_file_path), exist_ok=True)
             await attachment.save(input_file_path)
-            
+
             files = {'file': open(input_file_path, 'rb')}
             response = requests.post('http://your_server_ip:8000/inference', files=files)
-            
+
             if response.status_code == 200:
                 response_data = response.json()
                 if 'output_file' in response_data:
