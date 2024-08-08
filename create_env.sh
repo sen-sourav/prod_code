@@ -9,12 +9,15 @@ mkdir -p repos
 
 # Clone repositories and install dependencies
 git clone https://github.com/sen-sourav/Ultimate-Accompaniment-Transformer.git repos/Ultimate-Accompaniment-Transformer
-pip install ./repos/Ultimate-Accompaniment-Transformer
+python3 -m pip install ./repos/Ultimate-Accompaniment-Transformer
 git clone https://github.com/sen-sourav/basic-pitch-torch.git repos/basic-pitch-torch
-pip install ./repos/basic-pitch-torch
-pip install huggingface_hub
-pip install einops
-pip install torch-summary
+python3 -m pip install ./repos/basic-pitch-torch
+python3 -m pip install huggingface_hub
+python3 -m pip install einops
+python3 -m pip install torch
+python3 -m pip install torch-summary
+python3 -m pip install torchaudio
+python3 -m pip install tqdm
 
 # Install fluidsynth via apt
 sudo apt update
@@ -22,5 +25,5 @@ sudo apt install -y fluidsynth
 
 
 # Install for discord
-pip install discord
-pip install responses
+python3 -m pip install discord
+python3 -m pip install responses
