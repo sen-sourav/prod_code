@@ -14,6 +14,12 @@ def model_inference(model, input_file_path, output_dir):
     os.makedirs(output_dir, exist_ok=True)
     base_name = os.path.basename(input_file_path).split('.')[0]
 
+    model_precision = "bfloat16"
+    device_type = 'cuda'
+    dtype = 'bfloat16' if model_precision == 'bfloat16' and torch.cuda.is_bf16_supported() else 'float16'
+    ptdtype = {'bfloat16': torch.bfloat16, 'float16': torch.float16}[dtype]
+    ctx = torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+
     # Step 1: Convert vocal wav to midi
     model_output, midi_data, note_events = predict(input_file_path, model_path=Path('../repos/basic-pitch-torch/basic_pitch_torch/assets/basic_pitch_pytorch_icassp_2022.pth').resolve(), minimum_frequency=60)
     vocals_midi_path = os.path.join(output_dir, f"{base_name}.mid")
@@ -166,9 +172,9 @@ def model_inference(model, input_file_path, output_dir):
     
     
     detailed_stats = TMIDIX.Tegridy_ms_SONG_to_MIDI_Converter(song_f,
-                                                              output_signature = 'Ultimate Accompaniment Transformer',
+                                                              output_signature = 'yolo',
                                                               output_file_name = f"{output_dir}/{base_name}_seed_composition",
-                                                              track_name='Project Los Angeles',
+                                                              track_name='yolo',
                                                               list_of_MIDI_patches=patches
                                                               )
     
@@ -364,9 +370,9 @@ def model_inference(model, input_file_path, output_dir):
                       song_f.append(['note', time, dur, 0, pitch, vel, accompaniment_MIDI_patch_number])
     
     detailed_stats = TMIDIX.Tegridy_ms_SONG_to_MIDI_Converter(song_f,
-                                                              output_signature = 'Ultimate Accompaniment Transformer',
+                                                              output_signature = 'yolo',
                                                               output_file_name = f"{output_dir}/{base_name}_composition",
-                                                              track_name='Project Los Angeles',
+                                                              track_name='yolo',
                                                               list_of_MIDI_patches=patches
                                                               )
 

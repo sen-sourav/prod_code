@@ -9,7 +9,7 @@ def load_model():
     dim = 2048
     depth = 4
     heads = 16
-    model_precision = "bfloat16"
+
     models_dir_relative = "../repos/Ultimate-Accompaniment-Transformer/Models"
     full_path_to_models_dir = str(Path(models_dir_relative).resolve())
     model_checkpoint_file_name = 'Ultimate_Accompaniment_Transformer_Small_Improved_Trained_Model_13649_steps_0.3229_loss_0.898_acc.pth'
@@ -25,9 +25,6 @@ def load_model():
         )
 
     # Model instantiation
-    device_type = 'cuda'
-    dtype = 'bfloat16' if model_precision == 'bfloat16' and torch.cuda.is_bf16_supported() else 'float16'
-    ptdtype = {'bfloat16': torch.bfloat16, 'float16': torch.float16}[dtype]
 
     SEQ_LEN = 8192  # Model's seq len
     PAD_IDX = 767  # Model's pad index
