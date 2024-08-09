@@ -2,10 +2,11 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 
 conda create --name accmusic python=3.8
+conda init
 conda activate accmusic
 
 # Create repos directory
-mkdir -p repos
+mkdir -p repos uploads output
 
 # Clone repositories and install dependencies
 git clone https://github.com/sen-sourav/Ultimate-Accompaniment-Transformer.git repos/Ultimate-Accompaniment-Transformer

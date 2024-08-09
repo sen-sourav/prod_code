@@ -3,7 +3,6 @@ from discord.ext import commands
 import requests
 import os
 from app.model_inference import model_inference
-from dotenv import load_dotenv
 
 TOKEN = 'REDACTED'  # Replace with your bot's token
 
