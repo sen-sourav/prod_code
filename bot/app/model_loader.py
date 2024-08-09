@@ -10,7 +10,7 @@ def load_model():
     depth = 4
     heads = 16
     model_precision = "bfloat16"
-    models_dir_relative = "./repos/Ultimate-Accompaniment-Transformer/Models"
+    models_dir_relative = "../repos/Ultimate-Accompaniment-Transformer/Models"
     full_path_to_models_dir = str(Path(models_dir_relative).resolve())
     model_checkpoint_file_name = 'Ultimate_Accompaniment_Transformer_Small_Improved_Trained_Model_13649_steps_0.3229_loss_0.898_acc.pth'
     model_path = f"{full_path_to_models_dir}/Small_Improved/{model_checkpoint_file_name}"
